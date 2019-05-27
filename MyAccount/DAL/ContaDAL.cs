@@ -103,5 +103,14 @@ namespace MyAccount.DAL
             }
         }
 
+        /*
+         * 
+         * Create table Conta(
+         *	Id int identity(1,1) not null,
+         *	ContaId int not null,
+         *	Saldo float not null
+         *	)
+         */
+
     }
 }

@@ -7,7 +7,11 @@ namespace MyAccount.Models
 {
     public class ContaModel
     {
-        public int Id { get; set; }
-        public double Saldo { get; set; }   
+        public int Id
+        {
+            get;
+            set;
+        }
+        public double Saldo { get; set; }
     }
 }

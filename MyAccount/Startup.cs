@@ -47,7 +47,7 @@ namespace MyAccount
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Conta}/{action=Index}/{id?}");
             });
         }
     }

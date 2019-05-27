@@ -12,9 +12,6 @@ namespace MyAccount.DAL
 {
     public class ContaDAL : IContaDAL
     {
-        
-        private readonly IConfiguration config;
-        //private readonly string connectionString = @"Server=localhost; Database=FinanceDb; user id=sa; password=pl$150886;";
         private readonly string connectionString = @"Data Source=DESKTOP-U9ML8TI;Initial Catalog=FinanceDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
   
         public IEnumerable<ContaModel> GetTodasAsContas()

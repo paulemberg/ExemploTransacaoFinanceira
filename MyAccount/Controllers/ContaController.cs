@@ -11,10 +11,14 @@ namespace MyAccount.Controllers
 {
     public class ContaController : Controller
     {
+        private readonly OperacaoConta _operacaoConta = new OperacaoConta(new ContaModel());
+
         // GET: Conta
         public ActionResult Index()
         {
-            var model = new OperacaoConta(new ContaModel()).GetTodasAsContas();
+
+
+            var model = _operacaoConta.GetTodasAsContas();
             return View(model);
         }
 
@@ -37,7 +41,13 @@ namespace MyAccount.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                var conta = new ContaModel()
+                {
+                    Id = Convert.ToInt32(collection["Id"]),
+                    Saldo = Convert.ToDouble(collection["Saldo"])
+                };
+
+                _operacaoConta.AddConta(conta);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -50,7 +60,9 @@ namespace MyAccount.Controllers
         // GET: Conta/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var conta = _operacaoConta.GetConta(id);
+
+            return View(conta);
         }
 
         // POST: Conta/Edit/5
@@ -58,10 +70,16 @@ namespace MyAccount.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
+
             try
             {
-                // TODO: Add update logic here
+                var conta = _operacaoConta.GetConta(id);
 
+                conta.Id = Convert.ToInt32(collection["Id"]);
+                conta.Saldo = Convert.ToDouble(collection["Saldo"]);
+
+                _operacaoConta.AtualizaSaldo(conta);
+                
                 return RedirectToAction(nameof(Index));
             }
             catch
